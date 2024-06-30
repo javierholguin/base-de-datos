@@ -71,12 +71,12 @@ body {
     display: block;
   }
   
- .fas {
+  .fas {
     font-size: 45px;
     margin-right: 30px;
   }
   
- .dropdown-menu li:last-child {
+  .dropdown-menu li:last-child {
     white-space: nowrap;
     padding: 3px 5px;
   }
