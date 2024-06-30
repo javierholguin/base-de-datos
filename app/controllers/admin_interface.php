@@ -7,6 +7,6 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario']!= 'administra
 }
 
 // Mostrar la interfaz del administrador
-header("Location: /app/views/html/interfaz_empleado.html");
+header("Location: /app/views/html/interfaz_admin.html");
 exit;
 ?>
