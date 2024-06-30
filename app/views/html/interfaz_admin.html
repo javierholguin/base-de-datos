@@ -6,6 +6,7 @@
     <title>Almacen Minimarket</title>
     <link rel="stylesheet" href="/app/views/css/style_empleado.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="interface-emple">
     <div class="container">
@@ -46,8 +47,50 @@
             });
         });
     </script>
+    <div class="flex justify-between mb-4">
+        <h2 class="text-2xl">Lista de Productos</h2>
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" id="btn-agregar">Agregar</button>
+    </div>
     <div class="productos-container">
-    
+        <table class="table-auto w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Producto</th>
+                    <th class="px-4 py-2">Precio</th>
+                    <th class="px-4 py-2">Código</th>
+                    <th class="px-4 py-2">Categoría</th>
+                    <th class="px-4 py-2">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="productos-list">
+                <?php foreach ($productos as $producto) { ?>
+                    <tr>
+                        <td class="px-4 py-2"><?= $producto['nombre'] ?></td>
+                        <td class="px-4 py-2"><?= $producto['precio'] ?></td>
+                        <td class="px-4 py-2"><?= $producto['codigo'] ?></td>
+                        <td class="px-4 py-2"><?= $producto['categoria'] ?></td>
+                        <td class="px-4 py-2">
+                            <button class="btn-edit bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" data-id="<?= $producto['id'] ?>">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                            <button class="btn-delete bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" data-id="<?= $producto['id'] ?>">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+        <div id="formulario-agregar" class="hidden">
+            <form>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre"><br><br>
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio"><br><br>
+                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" id="btn-guardar">Guardar</button>
+            </form>
+        </div>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -58,7 +101,17 @@
                 dataType: "json",
                 success: function(data) {
                     $.each(data, function(index, producto) {
-                        $(".productos-container").append("<li>" + producto.nombre + " - " + producto.precio + "</li>");
+                        $("#productos-list").append(`
+                            <li class="py-4">
+                                <div class="flex justify-between">
+                                    <span class="text-lg">${producto.nombre} - ${producto.precio}</span>
+                                    <div class="flex justify-end">
+                                        <button class="btn-edit bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" data-id="${producto.id}">Editar</button>
+                                        <button class="btn-delete bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" data-id="${producto.id}">Eliminar</button>
+                                    </div>
+                                </div>
+                            </li>
+                        `);
                     });
                 }
             });

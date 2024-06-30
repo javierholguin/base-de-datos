@@ -58,7 +58,7 @@ body {
   .dropdown-menu {
     display: none;
     position: absolute;
-    top: 80px;
+    top: 80px;  
     right: 30px;
     background-color: #8b8b8e;
     padding: 5px 5px; 
@@ -153,4 +153,34 @@ body {
     height: 1.3em;
     width: 1.3em;
     fill: #b4b4b4;
+  }
+
+  .table-auto {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table-auto th, .table-auto td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .table-auto th {
+    background-color: #f0f0f0;
+  }
+  
+  .table-auto tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .btn-edit, .btn-delete {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 0;
+  }
+  
+  .btn-edit i, .btn-delete i {
+    font-size: 18px;
   }
