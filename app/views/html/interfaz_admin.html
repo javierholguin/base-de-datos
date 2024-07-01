@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="interface-emple">
-    <div class="container">
+    <div class="tw-container">
     <nav>
         <img src="/app/public/logos/logo.svg" alt="logo" class="logo">
         <div class="search">
@@ -70,10 +70,10 @@
                         <td class="px-4 py-2"><?= $producto['codigo'] ?></td>
                         <td class="px-4 py-2"><?= $producto['categoria'] ?></td>
                         <td class="px-4 py-2">
-                            <button class="btn-edit bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" data-id="<?= $producto['id'] ?>">
+                            <button class="btn-edit bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px 1 rounded" data-id="<?= $producto['id'] ?>">
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
-                            <button class="btn-delete bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" data-id="<?= $producto['id'] ?>">
+                            <button class="btn-delete bg-red-500 hover:bg-red-700 text-white font-bold py-2 px 1 rounded" data-id="<?= $producto['id'] ?>">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </td>
