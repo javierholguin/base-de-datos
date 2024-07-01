@@ -1,0 +1,179 @@
+  .tw-container {
+    max-width: 1600px; 
+    margin: 0 auto;
+    overflow-x: hidden; 
+  }
+  
+  .tw-grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); 
+    grid-gap: 10px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+  }
+  
+  .tw-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(131, 131, 131);
+    padding-left: 2vw;
+    height: 70px; 
+  }
+  
+  .tw-logo {
+    width: 70px;
+    height: 70px;
+    margin: 0 30px;
+  }
+  
+  .tw-cont-ul {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tw-li {
+    list-style: none;
+    cursor: pointer;
+    padding: 1.5vw;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .tw-li:hover {
+    background-color: rgb(251, 251, 251);
+  }
+  
+  .tw-user-dropdown {
+    position: relative;
+  }
+  
+  .tw-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 80px;  
+    right: 30px;
+    background-color: #8b8b8e;
+    padding: 5px 5px; 
+    border-radius: 5px; 
+    border-bottom: none; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .tw-user-dropdown:hover > .tw-dropdown-menu {
+    display: block;
+  }
+  
+  .tw-fas {
+    font-size: 25px;
+    margin-right: 30px;
+  }
+  
+  .tw-dropdown-menu li:last-child {
+    white-space: nowrap;
+    padding: 3px 5px;
+  }
+  
+  .tw-productos-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tw-productos-container li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .tw-productos-container li:last-child {
+    border-bottom: none;
+  }
+  
+  .tw-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin: 0 20px;
+  }
+  
+  .tw-search__input {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: #f4f2f2;
+    border: none;
+    color: #080808;
+    padding: 0.7rem 1rem;
+    border-radius: 30px;
+    width: 35em;
+    transition: all ease-in-out.5s;
+    margin-right: -2rem;
+  }
+  
+  .tw-search__input:hover,.tw-search__input:focus {
+    box-shadow: 0 0 1em #00000013;
+  }
+  
+  .tw-search__input:focus {
+    outline: none;
+    background-color: #f0eeee;
+  }
+  
+  .tw-search__input::-webkit-input-placeholder {
+    font-weight: 100;
+    color: #939292;
+  }
+  
+  .tw-search__input:focus +.tw-search__button {
+    background-color: #f0eeee;
+  }
+  
+  .tw-search__button {
+    border: none;
+    background-color: #f4f2f2;
+    margin-top:.1em;
+  }
+  
+  .tw-search__button:hover {
+    cursor: pointer;
+  }
+  
+  .tw-search__icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: #b4b4b4;
+  }
+  
+  .tw-table-auto {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .tw-table-auto th, .tw-table-auto td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .tw-table-auto th {
+    background-color: #f0f0f0;
+  }
+  
+  .tw-table-auto tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .tw-btn-edit, .tw-btn-delete {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding: 0;
+  }
+  
+  .tw-btn-edit i, .tw-btn-delete i {
+    font-size: 10px;
+  }
