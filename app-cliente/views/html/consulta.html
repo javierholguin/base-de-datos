@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Productos</title>
+    <link rel="stylesheet" href="../css/style-consulta.css">
+</head>
+<body>
+    <header>
+        <div class="top-right">
+            <button id="inicio-btn">Inicio</button>
+            <button id="consulta-btn">Consulta</button>
+            <button id="ventas-btn">Ventas</button>
+            <button id="cerrar-sesion-btn">Cerrar Sesión</button>
+        </div>
+    </header>
+    <h1>Consulta de Productos</h1>
+    <main>
+        <table id="productos-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Código</th>
+                    <th>Disponibilidad</th>
+                    <th>Sucursal</th>
+                    <th>Cantidad</th>
+                </tr>
+            </thead>
+            <tbody id="productos-tbody">
+                <!-- Aquí se agregarán los productos dinámicamente -->
+            </tbody>
+        </table>
+    </main>
+
+    <script src="/app-cliente/js/consulta.js"></script>
+</body>
+</html>
+

@@ -1,33 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Almacen Minimarket</title>
-    <link rel="stylesheet" href="/app/views/css/styles.css">
+    <title>Almacenes MM</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/app-cliente/js/usuarios.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #64827c, #5f4c35); /* Greenish background gradient */
+        }
+
+        .container {
+            width: 400px;
+            padding: 40px;
+            background-color: #B0B0B0; /* Light Grayish White */
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.3s ease; /* Agregado para el efecto de zoom */
+        }
+
+        .container:hover {
+            transform: scale(1.05); /* Agregado para el efecto de zoom */
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #55716b; /* Twitter Dark Blue */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 18px;
+            color: #333;
+            box-sizing: border-box;
+            background-color: #fff; /* White */
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #1e5c50; /* Twitter Dark Blue */
+            color: #fff; /* White */
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3c3c3c; /* Lighter Green */
+            transform: scale(1.05);
+        }
+
+        a {
+            color: #16a085; /* Twitter Dark Blue */
+            text-decoration: none;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(176, 176, 176, 0.8); /* Color de fondo del overlay */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #454545; /* Green */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 0.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+         /* Estilos específicos para el nuevo diseño del botón */
+
+         #buttonContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        .imagenlogooficial {
+            margin-left: -20px; /* Ajusta el valor según sea necesario */
+        }
+
+    }
+
+    /* Estilos específicos para el nuevo diseño del botón */
+        #togglePassword {
+        font-size: 14px;
+        padding: 15px;
+        margin-right: 3px;
+        background-color: #1e5c50;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        width: 30%; /* Ajusta el ancho del botón "Mostrar Contraseña" igual al del botón "Iniciar sesión" */
+    }
+
+    #togglePassword:hover {
+        background-color: #138971; /* Lighter Green */
+        transform: scale(1.05);
+    }
+
+    #btnLogin {
+    width: 50%;
+    margin-top: 10px; /* Para mantener el espacio entre los dos botones */
+}
+
+
+    </style>
 </head>
-<body class="login-page">
-    <form action="/app/models/login.php" method="post">
-      <div class="container">
-        <div class="login-card">
-          <div class="card-header">
-            <div class="log">Inicio de sesión</div>
-          </div>
-          <form>
-            <div class="form-group">
-              <label for="username">Usuario:</label>
-              <input required="" name="username" id="username" type="text">
-            </div>
-            <div class="form-group">
-              <label for="password">Contraseña:</label>
-              <input required="" name="password" id="password" type="password">
-            </div>
-            <div class="form-group">
-              <input value="Iniciar Sesión" type="submit">
-            </div>
-          </form>
-        </div>
-      </div>
-    </form>
+
+<body>
+
+
+  <div class="container">
+      <h1 class="title">Almacenes MM</h1>
+      
+
+      <form>
+          <input type="text" id="usuario" placeholder="Usuario">
+          <input type="password" id="contraseña" placeholder="Contraseña">
+          <button class="Boton-espacio" type="button" id="togglePassword">Mostrar Contraseña</button>
+          <button type="button" id="btnLogin" style="margin-top: 10px;">Iniciar sesión</button>        </form>
+  </div>
+
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader"></div>
+  </div>
+
+
+  <script>
+    document.querySelector("#btnLogin").addEventListener("click", () => {
+        const user = document.getElementById("usuario").value;
+        const pass = document.getElementById("contraseña").value;
+
+        // Muestra el overlay de carga
+        document.getElementById('loadingOverlay').style.display = 'flex';
+
+        // Envía la solicitud de inicio de sesión al archivo login.php
+        fetch('login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `username=${user}&password=${pass}`
+        })
+       .then(response => response.text())
+       .then(data => {
+        if (data === 'uccess') {
+          // Redirigir a la interfaz de inicio si la autenticación es correcta
+          window.location = '/app-cliente/views/html/interfaz_empleado.html';
+        } else {
+                // Muestra SweetAlert si las credenciales son incorrectas
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Usuario o contraseña incorrectos',
+                });
+
+                // Restablece los campos
+                document.getElementById("usuario").value = "";
+                document.getElementById("contraseña").value = "";
+            }
+
+            // Oculta el overlay de carga después de 5 segundos
+            document.getElementById('loadingOverlay').style.display = 'none';
+        })
+       .catch(error => console.error('Error:', error));
+    });
+  </script>
+
+      <script>
+        const passwordInput = document.getElementById("contraseña");
+        const togglePasswordButton = document.getElementById("togglePassword");
+
+        togglePasswordButton.addEventListener("click", () => {
+            passwordInput.type = (passwordInput.type === "password") ? "text" : "password";
+            togglePasswordButton.textContent = (passwordInput.type === "password") ? "Mostrar Contraseña" : "Ocultar Contraseña";
+        });
+
+        // Resto de tu script existente...
+    </script>
+    <script src="/app-cliente/js/usuarios.js"></script>
 </body>
 </html>
